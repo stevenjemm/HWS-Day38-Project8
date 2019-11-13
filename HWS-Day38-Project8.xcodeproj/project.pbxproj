@@ -13,6 +13,7 @@
 		DF08C636237BB41800804D41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF08C635237BB41800804D41 /* Assets.xcassets */; };
 		DF08C639237BB41800804D41 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF08C638237BB41800804D41 /* Preview Assets.xcassets */; };
 		DF08C63C237BB41800804D41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF08C63A237BB41800804D41 /* LaunchScreen.storyboard */; };
+		DF08C644237BB54400804D41 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF08C643237BB54400804D41 /* MainController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		DF08C638237BB41800804D41 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DF08C63B237BB41800804D41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF08C63D237BB41800804D41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF08C643237BB54400804D41 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				DF08C633237BB41100804D41 /* ContentView.swift */,
 				DF08C635237BB41800804D41 /* Assets.xcassets */,
 				DF08C63A237BB41800804D41 /* LaunchScreen.storyboard */,
+				DF08C643237BB54400804D41 /* MainController.swift */,
 				DF08C63D237BB41800804D41 /* Info.plist */,
 				DF08C637237BB41800804D41 /* Preview Content */,
 			);
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF08C644237BB54400804D41 /* MainController.swift in Sources */,
 				DF08C630237BB41100804D41 /* AppDelegate.swift in Sources */,
 				DF08C632237BB41100804D41 /* SceneDelegate.swift in Sources */,
 				DF08C634237BB41100804D41 /* ContentView.swift in Sources */,
@@ -296,7 +300,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lagom-exp.HWS-Day38-Project8";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -316,7 +320,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lagom-exp.HWS-Day38-Project8";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
