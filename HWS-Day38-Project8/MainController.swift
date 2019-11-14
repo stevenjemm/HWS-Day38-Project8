@@ -19,6 +19,8 @@ class MainController: UIViewController {
     var activatedButtons = [UIButton]()
     var solutions = [String]()
     
+    var numberOfItemsMatched = 0
+    
     var score = 0 {
         didSet {
             scoreLabel.text = "Score: \(score)"
@@ -118,6 +120,8 @@ class MainController: UIViewController {
                 letterButton.titleLabel?.font = UIFont.systemFont(ofSize: 36)
                 letterButton.setTitle("WWW", for: .normal)
                 letterButton.addTarget(self, action: #selector(letterTapped(_:)), for: .touchUpInside)
+                letterButton.layer.borderWidth = 1
+                letterButton.layer.borderColor = UIColor.gray.cgColor
                 
                 let frame = CGRect(x: column * width, y: row * height, width: width, height: height)
                 letterButton.frame = frame
@@ -155,12 +159,40 @@ class MainController: UIViewController {
             
             currentAnswer.text = ""
             score += 1
-            
-            if score % 7 == 0 {
-                let ac = UIAlertController(title: "Well done!", message: "Are you ready for the next level?", preferredStyle: .alert)
-                ac.addAction(.init(title: "Let's go!", style: .default, handler: levelUp))
+            numberOfItemsMatched += 1
+            if numberOfItemsMatched % 7 == 0 {
+                let grade = CGFloat(score/7)
+                let title = grade < 0.5 ? "Oops!" : "Well done!"
+                let message = grade < 0.5 ? "You didn't pass...sorry" : "Are you ready for the next level?"
+                
+                let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                
+                if grade < 0.5 {
+                    ac.addAction(.init(title: "Try again!", style: .default){ _ in
+                        self.solutions.removeAll(keepingCapacity: true)
+                        self.score = 0
+                        self.loadLevel()
+                        
+                        for button in self.letterButtons {
+                            button.isHidden = false
+                        }
+                    })
+                    present(ac, animated: true)
+                } else {
+                    
+                    ac.addAction(.init(title: "Let's go!", style: .default, handler: levelUp))
+                }
                 present(ac, animated: true)
             }
+        } else {
+            let ac = UIAlertController(title: "Oops!", message: "That answer wasn't correct this time.", preferredStyle: .alert)
+            ac.addAction(.init(title: "Try Again", style: .default, handler: { (_) in
+                self.score = self.score > 0 ? max(self.score - 2, 0) : 0
+                
+                self.clearTapped(sender)
+                
+            }))
+            present(ac, animated: true)
         }
     }
     
